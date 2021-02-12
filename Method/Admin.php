@@ -16,9 +16,9 @@ final class Admin extends MethodForm
     public function createForm(GDT_Form $form)
     {
         $form->addFields([
-            GDT_Submit::make()->label('detect_zip'),
             GDT_AntiCSRF::make(),
         ]);
+        $form->actions()->addField(GDT_Submit::make()->label('detect_zip'));
     }
     
     public function formValidated(GDT_Form $form)
