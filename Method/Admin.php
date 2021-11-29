@@ -9,6 +9,10 @@ use GDO\Form\GDT_AntiCSRF;
 use GDO\Util\Process;
 use GDO\ZIP\Module_ZIP;
 
+/**
+ * Admin functions for the ZIP module.
+ * @author gizmore
+ */
 final class Admin extends MethodForm
 {
     use MethodAdmin;
@@ -22,6 +26,11 @@ final class Admin extends MethodForm
     }
     
     public function formValidated(GDT_Form $form)
+    {
+    	$this->detectBinaries();
+    }
+    
+    public function detectBinaries()
     {
         if ($path = Process::commandPath("zip"))
         {

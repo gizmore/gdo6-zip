@@ -3,6 +3,7 @@ namespace GDO\ZIP;
 
 use GDO\Core\GDO_Module;
 use GDO\File\GDT_Path;
+use GDO\ZIP\Method\Admin;
 
 /**
  * Holds path for zip and gzip.
@@ -21,6 +22,14 @@ final class Module_ZIP extends GDO_Module
     public function href_administrate_module() { return $this->href('Admin'); }
     public function onLoadLanguage() { return $this->loadLanguage('lang/zip'); }
 
+    ###############
+    ### Install ###
+    ###############
+    public function onInstall()
+    {
+    	Admin::make()->detectBinaries();
+    }
+    
     ##############
     ### Config ###
     ##############
